@@ -574,26 +574,291 @@ behavior:"smooth"
 </body>
 
 </html>
-<script>
-function selectProduct...
-</script>
 
 <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyCaAvLJqKn4DPwflZ99GBxa1HDYpoH2cpo",
-    authDomain: "luxury-fashion-house.firebaseapp.com",
-    projectId: "luxury-fashion-house",
-    storageBucket: "luxury-fashion-house.firebasestorage.app",
-    messagingSenderId: "56524561522",
-    appId: "1:56524561522:web:b79d08b2bb38bee95376eb"
-  };
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+
+import {
+
+getAuth,
+
+createUserWithEmailAndPassword,
+
+signInWithEmailAndPassword,
+
+signOut,
+
+onAuthStateChanged
+
+}
+
+from "https://www.gstatic.com/firebasejs/12.14.0/firebase-auth.js";
+
+
+import {
+
+getFirestore,
+
+collection,
+
+addDoc,
+
+query,
+
+where,
+
+getDocs,
+
+orderBy
+
+}
+
+from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
+
+
+const firebaseConfig = {
+
+apiKey: "AIzaSyCaAvLJqKn4DPwflZ99GBxa1HDYpoH2cpo",
+
+authDomain: "luxury-fashion-house.firebaseapp.com",
+
+projectId: "luxury-fashion-house",
+
+storageBucket: "luxury-fashion-house.firebasestorage.app",
+
+messagingSenderId: "56524561522",
+
+appId: "1:56524561522:web:b79d08b2bb38bee95376eb"
+
+};
+
+
+
+const app = initializeApp(firebaseConfig);
+
+
+const auth = getAuth(app);
+
+
+const db = getFirestore(app);
+
+
+
+
+
+// Sign up
+
+window.signup = async function(){
+
+
+let email=document.getElementById("signupEmail").value;
+
+let password=document.getElementById("signupPassword").value;
+
+
+try{
+
+await createUserWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+
+alert("Account created");
+
+
+}catch(e){
+
+alert(e.message);
+
+}
+
+}
+
+
+
+
+
+// Login
+
+window.login = async function(){
+
+
+let email=document.getElementById("loginEmail").value;
+
+let password=document.getElementById("loginPassword").value;
+
+
+try{
+
+await signInWithEmailAndPassword(
+auth,
+email,
+password
+);
+
+
+alert("Login success");
+
+
+}catch(e){
+
+alert(e.message);
+
+}
+
+}
+
+
+
+
+
+// Logout
+
+window.logout=function(){
+
+
+signOut(auth);
+
+
+}
+
+
+
+
+
+
+// Submit Order
+
+window.placeOrder = async function(){
+
+
+const user=auth.currentUser;
+
+
+if(!user){
+
+alert("Please login first");
+
+return;
+
+}
+
+
+
+let order={
+
+
+userId:user.uid,
+
+
+email:user.email,
+
+
+customerName:
+document.getElementById("customerName").value,
+
+
+productName:
+document.getElementById("productName").value,
+
+
+quantity:
+Number(document.getElementById("quantity").value),
+
+
+price:
+Number(document.getElementById("price").value),
+
+
+message:
+document.getElementById("message").value,
+
+
+orderDate:Date.now()
+
+
+};
+
+
+
+try{
+
+
+await addDoc(
+
+collection(db,"orders"),
+
+order
+
+);
+
+
+alert("Order submitted!");
+
+
+
+}
+
+catch(e){
+
+alert(e.message);
+
+}
+
+
+
+}
+
+
+
+
+
+
+
+
+// User status
+
+
+onAuthStateChanged(auth,(user)=>{
+
+
+let info=document.getElementById("userInfo");
+
+let logout=document.getElementById("logoutBtn");
+
+
+
+if(user){
+
+
+info.innerHTML="Logged in: "+user.email;
+
+
+logout.classList.remove("hidden");
+
+
+}
+
+else{
+
+
+info.innerHTML="Not Logged In";
+
+
+logout.classList.add("hidden");
+
+
+}
+
+
+});
+
+
+
 </script>
