@@ -1,414 +1,576 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Luxury Fashion House</title>
 
 <style>
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial,sans-serif;
+    font-family:"Arial",sans-serif;
 }
+
 
 body{
-    background:#f4f7fb;
+    background:#0f0f0f;
+    color:white;
 }
+
 
 header{
-    background:#2563eb;
-    color:white;
+    background:linear-gradient(135deg,#111,#3b2a00);
+    padding:40px 20px;
     text-align:center;
-    padding:20px;
 }
 
+
+header h1{
+    font-size:42px;
+    color:#d4af37;
+}
+
+
+header p{
+    margin-top:10px;
+    color:#ddd;
+}
+
+
 .container{
+
     width:90%;
     max-width:1200px;
     margin:auto;
-    padding:20px;
+    padding:30px 0;
+
 }
+
 
 .card{
-    background:white;
-    padding:20px;
-    border-radius:12px;
-    box-shadow:0 3px 10px rgba(0,0,0,0.1);
-    margin-bottom:20px;
+
+    background:#181818;
+    border:1px solid #333;
+    border-radius:15px;
+    padding:25px;
+    margin-bottom:25px;
+
 }
+
 
 h2{
-    margin-bottom:15px;
-    color:#2563eb;
+
+    color:#d4af37;
+    margin-bottom:20px;
+
 }
 
-input, textarea, select{
-    width:100%;
-    padding:12px;
-    margin:8px 0;
-    border:1px solid #ddd;
-    border-radius:8px;
-}
 
-button{
-    background:#2563eb;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-button:hover{
-    background:#1d4ed8;
-}
+/* PRODUCTS */
 
 .products{
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
 }
+
+
 
 .product{
-    background:white;
-    border-radius:12px;
+
+    background:#222;
+    border-radius:15px;
     overflow:hidden;
-    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    transition:0.3s;
+
 }
+
+
+.product:hover{
+
+    transform:translateY(-8px);
+
+}
+
+
 
 .product img{
+
     width:100%;
-    height:200px;
+    height:260px;
     object-fit:cover;
+
 }
+
+
 
 .product-info{
-    padding:15px;
+
+    padding:20px;
+
 }
+
+
+.product h3{
+
+    margin-bottom:10px;
+
+}
+
+
 
 .price{
-    color:green;
+
+    color:#d4af37;
+    font-size:22px;
     font-weight:bold;
+
 }
+
+
+button{
+
+    background:#d4af37;
+    color:black;
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    margin-top:15px;
+
+    font-weight:bold;
+
+}
+
+
+button:hover{
+
+    background:#f5d76e;
+
+}
+
+
+
+input,textarea,select{
+
+
+    width:100%;
+
+    padding:12px;
+
+    margin:8px 0;
+
+    border-radius:8px;
+
+    border:none;
+
+    background:#333;
+
+    color:white;
+
+
+}
+
+
+
+textarea{
+
+    height:100px;
+
+}
+
+
 
 .hidden{
+
     display:none;
+
 }
+
+
 
 .order-item{
-    padding:10px;
-    border-bottom:1px solid #eee;
+
+    background:#222;
+
+    padding:15px;
+
+    margin:10px 0;
+
+    border-radius:10px;
+
+    border-left:4px solid #d4af37;
+
 }
+
+
+
+footer{
+
+    text-align:center;
+
+    padding:30px;
+
+    color:#888;
+
+}
+
+
+
 </style>
+
 </head>
+
+
 <body>
 
+
 <header>
-<h1>🛒 My Online Store</h1>
-<p>Firebase Authentication + Firestore</p>
+
+<h1>💎 Luxury Fashion House</h1>
+
+<p>Premium Fashion Store Powered by Firebase</p>
+
 </header>
+
+
 
 <div class="container">
 
+
+
+<!-- PRODUCTS -->
+
 <div class="card">
-<h2>Store Products</h2>
+
+
+<h2>Our Collection</h2>
+
 
 <div class="products">
 
+
+
 <div class="product">
-<img src="https://www.chanel.com/images/t_one/w_0.51,h_0.51,c_crop/q_auto:good,f_autoplus,fl_lossy,dpr_1.1/w_1240/coco-eau-de-parfum-spray-3-4fl-oz--packshot-default-113530-9583352119326.jpg" alt="">
+
+
+<img src="https://www.chanel.com/images/t_one/w_0.51,h_0.51,c_crop/q_auto:good,f_autoplus,fl_lossy,dpr_1.1/w_1240/coco-eau-de-parfum-spray-3-4fl-oz--packshot-default-113530-9583352119326.jpg">
+
+
 <div class="product-info">
+
 <h3>CHANEL COCO EDP</h3>
+
 <p class="price">$3900</p>
-</div>
+
+
+<button onclick="selectProduct('CHANEL COCO EDP',3900)">
+Buy Now
+</button>
+
+
 </div>
 
+</div>
+
+
+
+
+
 <div class="product">
-<img src="https://www.chanel.com/images/t_one/w_0.50,h_0.50,c_crop/q_auto:good,f_autoplus,fl_lossy,dpr_1.1/w_1240/les-beiges-water-fresh-tint-light-1fl-oz--packshot-default-158810-8830503190558.jpg" alt="">
+
+
+<img src="https://www.chanel.com/images/t_one/w_0.50,h_0.50,c_crop/q_auto:good,f_autoplus,fl_lossy,dpr_1.1/w_1240/les-beiges-water-fresh-tint-light-1fl-oz--packshot-default-158810-8830503190558.jpg">
+
+
 <div class="product-info">
+
 <h3>LES BEIGES</h3>
+
 <p class="price">$70</p>
+
+
+<button onclick="selectProduct('LES BEIGES',70)">
+Buy Now
+</button>
+
+
 </div>
+
 </div>
+
+
+
+
 
 <div class="product">
-<img src="https://www.chanel.com/images/as///t_fashioncommercial_trim,f_auto,q_auto:good,dpr_1.1/w_3200/-80391495.jpg%203200w" alt="">
+
+
+<img src="https://www.chanel.com/images/as///t_fashioncommercial_trim,f_auto,q_auto:good,dpr_1.1/w_3200/-80391495.jpg">
+
+
 <div class="product-info">
+
+
 <h3>Classic 11.12 Handbag</h3>
+
 <p class="price">$6000</p>
+
+
+<button onclick="selectProduct('Classic 11.12 Handbag',6000)">
+Buy Now
+</button>
+
+
 </div>
+
+
+</div>
+
+
+
 </div>
 
 </div>
-</div>
+
+
+
+
+
+<!-- SIGN UP -->
+
 
 <div class="card">
-<h2>Sign Up</h2>
 
-<input type="email" id="signupEmail" placeholder="Email">
-<input type="password" id="signupPassword" placeholder="Password">
-<button onclick="signup()">Create Account</button>
+
+<h2>Create Account</h2>
+
+
+<input id="signupEmail" placeholder="Email">
+
+
+<input id="signupPassword" type="password" placeholder="Password">
+
+
+<button onclick="signup()">
+Sign Up
+</button>
+
+
 </div>
 
+
+
+
+
+<!-- LOGIN -->
+
+
 <div class="card">
+
+
 <h2>Login</h2>
 
-<input type="email" id="loginEmail" placeholder="Email">
-<input type="password" id="loginPassword" placeholder="Password">
-<button onclick="login()">Login</button>
-</div>
 
-<div class="card">
-<h2>User</h2>
+<input id="loginEmail" placeholder="Email">
 
-<p id="userInfo">Not Logged In</p>
 
-<button id="logoutBtn" class="hidden" onclick="logout()">
-Logout
+<input id="loginPassword" type="password" placeholder="Password">
+
+
+<button onclick="login()">
+Login
 </button>
+
+
 </div>
 
+
+
+
+
+<!-- USER -->
+
+
 <div class="card">
+
+
+<h2>User Status</h2>
+
+
+<p id="userInfo">
+Not Logged In
+</p>
+
+
+<button id="logoutBtn"
+class="hidden"
+onclick="logout()">
+
+Logout
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+<!-- ORDER -->
+
+
+<div class="card">
+
+
 <h2>Place Order</h2>
 
-<input id="customerName" placeholder="Customer Name">
+
+<input id="customerName"
+placeholder="Customer Name">
+
+
 
 <select id="productName">
-<option>Running Shoes</option>
-<option>T-Shirt</option>
-<option>Jacket</option>
+
+
+<option value="">
+Select Product
+</option>
+
+
+<option>
+CHANEL COCO EDP
+</option>
+
+
+<option>
+LES BEIGES
+</option>
+
+
+<option>
+Classic 11.12 Handbag
+</option>
+
+
 </select>
 
-<input id="quantity" type="number" min="1" value="1">
 
-<input id="price" type="number" placeholder="Price">
 
-<textarea id="message" placeholder="Message"></textarea>
+<input id="quantity"
+type="number"
+value="1"
+min="1">
+
+
+
+<input id="price"
+readonly
+placeholder="Price">
+
+
+
+<textarea id="message"
+placeholder="Message">
+
+</textarea>
+
+
 
 <button onclick="placeOrder()">
+
 Submit Order
+
 </button>
+
+
+
 </div>
+
+
+
+
+
+
+<!-- HISTORY -->
+
 
 <div class="card">
-<h2>My Order History</h2>
-<div id="orderHistory"></div>
-</div>
+
+
+<h2>
+My Order History
+</h2>
+
+
+<div id="orderHistory">
 
 </div>
 
-<script type="module">
 
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-
-import {
-getAuth,
-createUserWithEmailAndPassword,
-signInWithEmailAndPassword,
-signOut,
-onAuthStateChanged
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-
-import {
-getFirestore,
-collection,
-addDoc,
-query,
-where,
-getDocs,
-orderBy
-}
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-const firebaseConfig = {
-apiKey: "YOUR_API_KEY",
-authDomain: "YOUR_PROJECT.firebaseapp.com",
-projectId: "YOUR_PROJECT_ID",
-storageBucket: "YOUR_PROJECT.appspot.com",
-messagingSenderId: "XXXXXXXX",
-appId: "XXXXXXXX"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-
-window.signup = async function(){
-
-const email =
-document.getElementById("signupEmail").value;
-
-const password =
-document.getElementById("signupPassword").value;
-
-try{
-
-await createUserWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-alert("Account Created!");
-
-}catch(error){
-alert(error.message);
-}
-}
-
-window.login = async function(){
-
-const email =
-document.getElementById("loginEmail").value;
-
-const password =
-document.getElementById("loginPassword").value;
-
-try{
-
-await signInWithEmailAndPassword(
-auth,
-email,
-password
-);
-
-alert("Login Successful");
-
-}catch(error){
-alert(error.message);
-}
-}
-
-window.logout = async function(){
-
-await signOut(auth);
-
-alert("Logged Out");
-
-}
-
-async function loadOrders(user){
-
-const container =
-document.getElementById("orderHistory");
-
-container.innerHTML = "";
-
-const q = query(
-collection(db,"orders"),
-where("userId","==",user.uid)
-);
-
-const snapshot = await getDocs(q);
-
-snapshot.forEach(doc=>{
-
-const order = doc.data();
-
-container.innerHTML += `
-<div class="order-item">
-<b>${order.productName}</b><br>
-Customer: ${order.customerName}<br>
-Quantity: ${order.quantity}<br>
-Price: $${order.price}<br>
-Message: ${order.message}<br>
-Date: ${new Date(order.orderDate).toLocaleString()}
 </div>
-`;
+
+
+
+</div>
+
+
+
+<footer>
+
+Luxury Fashion House © 2026
+
+</footer>
+
+
+
+<script>
+
+
+function selectProduct(name,price){
+
+
+document.getElementById("productName").value=name;
+
+
+document.getElementById("price").value=price;
+
+
+
+window.scrollTo({
+
+top:
+document.querySelector(".card:nth-last-child(2)").offsetTop,
+
+behavior:"smooth"
 
 });
 
-}
-
-window.placeOrder = async function(){
-
-const user = auth.currentUser;
-
-if(!user){
-alert("Please login first.");
-return;
-}
-
-const customerName =
-document.getElementById("customerName").value;
-
-const productName =
-document.getElementById("productName").value;
-
-const quantity =
-document.getElementById("quantity").value;
-
-const price =
-document.getElementById("price").value;
-
-const message =
-document.getElementById("message").value;
-
-try{
-
-await addDoc(
-collection(db,"orders"),
-{
-userId:user.uid,
-userEmail:user.email,
-customerName,
-productName,
-quantity:Number(quantity),
-price:Number(price),
-message,
-orderDate:Date.now()
-}
-);
-
-alert("Order Submitted!");
-
-loadOrders(user);
-
-}catch(error){
-alert(error.message);
-}
-}
-
-onAuthStateChanged(auth, async(user)=>{
-
-const userInfo =
-document.getElementById("userInfo");
-
-const logoutBtn =
-document.getElementById("logoutBtn");
-
-if(user){
-
-userInfo.innerHTML =
-`
-Logged in as:
-<b>${user.email}</b>
-`;
-
-logoutBtn.classList.remove("hidden");
-
-loadOrders(user);
-
-}else{
-
-userInfo.innerHTML =
-"Not Logged In";
-
-logoutBtn.classList.add("hidden");
-
-document.getElementById(
-"orderHistory"
-).innerHTML = "";
 
 }
 
-});
 
 </script>
 
+
 </body>
+
 </html>
